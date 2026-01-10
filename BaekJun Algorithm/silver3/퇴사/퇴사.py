@@ -1,10 +1,19 @@
 if __name__ == '__main__':
     n = int(input())
-    arr = [list(map(int, input().split())) for _ in range(n)]
     dp = [0] * (n+1)
+    t = []
+    p = []
 
-    for i in range(n-1, -1, -1) :
-        if arr[i][0] + i > n :
+    for _ in range(n) :
+        t1, p1 = map(int,input().split())
+        t.append(t1)
+        p.append(p1)
+
+    for i in range(n-1, -1, -1):
+        print('i= ',  i)
+        if t[i] + i > n :
             dp[i] = dp[i+1]
+
         else :
-            dp[i] = max(dp[i+1], arr[i][1] + dp[i + arr[i][0]]) # 이전값, 현재의 p + dp[i]
+            dp[i] = max(dp[i+1], dp[t[i] + i] + p[i])
+    print(dp[0])
