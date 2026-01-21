@@ -1,15 +1,20 @@
-
 if __name__ == '__main__':
-    for _ in range(int(input())):
-        n = int(input())
-        arr = list(map(int, input().split()))
-        arr.reverse()
-        money = 0
-        max_num = 0
-        for i in arr :
-            if max_num < i :
-                max_num = i
-            else :
-                money += max_num - i
+    n = int(input())
+    dp = [0] * (n+1)
+    t = []
+    p = []
 
-        print(money)
+    for _ in range(n) :
+        t1, p1 = map(int,input().split())
+        t.append(t1)
+        p.append(p1)
+
+
+    for i in range(n-1, -1, -1):
+        if t[i] + i > n :
+            dp[i] = dp[i+1]
+
+        else :
+            dp[i] = max(dp[i+1], dp[t[i] + i] + p[i])
+
+    print(dp[0])
