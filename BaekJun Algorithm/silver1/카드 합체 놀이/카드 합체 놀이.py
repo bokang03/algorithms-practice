@@ -9,9 +9,6 @@ if __name__ == '__main__' :
 
         card = card1 + card2
 
-        x = arr.index(card1)
-        y = arr.index(card2)
-
         arr[0] = card
         arr[1] = card
 
